@@ -16,7 +16,7 @@ def data():
     if request.method == 'POST':
         file = request.form['upload-file']
         #data = pd.read_excel(file)
-        data = notInFacility.calculate(file)
+        data = notInFacility.calculate_by_day(file)
         return render_template('data.html', data=data)
         
 

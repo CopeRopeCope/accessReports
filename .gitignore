@@ -3,3 +3,4 @@ venv/
 
 *.xls
 *.pyc
+__pycache__/notInFacility.cpython-310.pyc

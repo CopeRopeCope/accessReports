@@ -97,7 +97,7 @@ def calculate (file):
 def calculate_by_day (file):
     #print ('**********************************************')
 
-    a = pd.read_excel ('C:\\attendence_report\\swipe\\' + file)
+    a = pd.read_excel ('.\\upload\\' + file)
     df = a.sort_values(by=['DateTime'])
     inout =[]
     name = ''

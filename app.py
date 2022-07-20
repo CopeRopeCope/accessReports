@@ -1,4 +1,6 @@
 import os
+import glob
+from turtle import up
 from flask import Flask, render_template, request, flash, redirect, url_for
 import pandas as pd
 import notInFacility
@@ -40,7 +42,11 @@ def upload_file():
 
 
 @app.route("/data", methods=['GET', 'POST'])
-def data():
+def data(): 
+    upload = os.listdir('.\\upload')
+    if upload:
+        for u in upload:
+            os.remove('.\\upload\\'+ u)
     if request.method == 'POST':
         #file = request.form['file']
         #data = pd.read_excel(file)

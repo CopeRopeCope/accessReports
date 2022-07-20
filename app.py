@@ -1,5 +1,4 @@
 import os
-import glob
 from turtle import up
 from flask import Flask, render_template, request, flash, redirect, url_for
 import pandas as pd

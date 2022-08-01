@@ -1,8 +1,17 @@
 from ast import And
 from pickle import FALSE
+from sys import platform
 import pandas as pd
 from datetime import date, datetime, timedelta
 from tabulate import tabulate
+import os
+import platform
+
+if 'Windows' in platform.system():
+    UPLOAD_FOLDER = os.getcwd() + '\\upload\\'
+    
+else: 
+    UPLOAD_FOLDER = os.getcwd() + '/upload/'
 
 def getDate(x):
     date = datetime.fromisoformat(" ".join(x.split(" ")[:-1]))
@@ -97,7 +106,7 @@ def calculate (file):
 def calculate_by_day (file):
     #print ('**********************************************')
 
-    a = pd.read_excel ('.\\upload\\' + file)
+    a = pd.read_excel (UPLOAD_FOLDER + file)
     df = a.sort_values(by=['DateTime'])
     inout =[]
     name = ''

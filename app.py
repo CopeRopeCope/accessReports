@@ -5,10 +5,11 @@ import pandas as pd
 import notInFacility
 from werkzeug.utils import secure_filename
 
-if 'Linux' in platform.system():
-    UPLOAD_FOLDER = os.getcwd() + '/upload/'
-else: 
+if 'Windows' in platform.system():
     UPLOAD_FOLDER = os.getcwd() + '\\upload\\'
+    
+else: 
+    UPLOAD_FOLDER = os.getcwd() + '/upload/'
 ALLOWED_EXTENSIONS = {'xls'}
 
 app=Flask(__name__)
@@ -44,6 +45,7 @@ def upload_file():
 
 @app.route("/data", methods=['GET', 'POST'])
 def data(): 
+    print (UPLOAD_FOLDER)
     upload = os.listdir(UPLOAD_FOLDER)
     if upload:
         for u in upload:

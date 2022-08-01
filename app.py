@@ -1,12 +1,14 @@
 import os
-
+import platform
 from flask import Flask, render_template, request, flash, redirect, url_for
 import pandas as pd
 import notInFacility
 from werkzeug.utils import secure_filename
 
-
-UPLOAD_FOLDER = os.getcwd() + '\\upload\\'
+if 'Linux' in platform.system():
+    UPLOAD_FOLDER = os.getcwd() + '/upload/'
+else: 
+    UPLOAD_FOLDER = os.getcwd() + '\\upload\\'
 ALLOWED_EXTENSIONS = {'xls'}
 
 app=Flask(__name__)

@@ -1,11 +1,12 @@
 import os
+
 from flask import Flask, render_template, request, flash, redirect, url_for
 import pandas as pd
 import notInFacility
 from werkzeug.utils import secure_filename
 
 
-UPLOAD_FOLDER = '.\\upload'
+UPLOAD_FOLDER = os.getcwd() + '\\upload\\'
 ALLOWED_EXTENSIONS = {'xls'}
 
 app=Flask(__name__)
@@ -41,10 +42,10 @@ def upload_file():
 
 @app.route("/data", methods=['GET', 'POST'])
 def data(): 
-    upload = os.listdir('.\\upload')
+    upload = os.listdir(UPLOAD_FOLDER)
     if upload:
         for u in upload:
-            os.remove('.\\upload\\'+ u)
+            os.remove(UPLOAD_FOLDER + u)
     if request.method == 'POST':
         #file = request.form['file']
         #data = pd.read_excel(file)
